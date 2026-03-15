@@ -1,0 +1,542 @@
+[
+  {
+    "id": "raskolnikov",
+    "name": "拉斯柯尔尼科夫",
+    "source": "《罪与罚》",
+    "title": "把思想磨成刀刃的人",
+    "verdict": "你总想先说服真理，再让灵魂跟上。",
+    "analysis": "你最危险的地方，不在于冷酷，而在于你曾真心相信自己有权跨过人间的界线。理性、自尊与罪感在你体内同时燃烧，所以你越想成为例外者，越会被良知拖回审判席。",
+    "quote": "你不是不痛苦，你是想先证明痛苦有意义。",
+    "communityMbti": "INTJ",
+    "palette": {
+      "accent": "#9f4a36",
+      "secondary": "#4f1714",
+      "glow": "rgba(159, 74, 54, 0.34)",
+      "surface": "#231514",
+      "paper": "#e1d1c0"
+    },
+    "profile": {
+      "reason": 5,
+      "faith": 1,
+      "nihilism": 3,
+      "compassion": 2,
+      "desire": 1,
+      "pride": 5,
+      "selfDestruction": 4,
+      "fantasy": 1,
+      "resentment": 3,
+      "devotion": 1
+    },
+    "russianName": "Родион Раскольников"
+  },
+  {
+    "id": "sonya",
+    "name": "索尼娅",
+    "source": "《罪与罚》",
+    "title": "在泥泞里守住微光的人",
+    "verdict": "你不是看不见黑暗，而是不肯把黑暗当作最后的答案。",
+    "analysis": "你身上最强的力量不是强硬，而是承受。你知道痛苦会怎样损伤人，也知道人有时必须靠一丝温柔才能活下去。你的同情与奉献不是软弱，而是一种几乎带着宗教意味的倔强。",
+    "quote": "你把怜悯留给别人，却常常忘了原谅自己。",
+    "communityMbti": "ISFJ",
+    "palette": {
+      "accent": "#b89a67",
+      "secondary": "#5f4526",
+      "glow": "rgba(184, 154, 103, 0.32)",
+      "surface": "#241b14",
+      "paper": "#efe3c5"
+    },
+    "profile": {
+      "reason": 1,
+      "faith": 5,
+      "nihilism": 0,
+      "compassion": 5,
+      "desire": 0,
+      "pride": 1,
+      "selfDestruction": 2,
+      "fantasy": 1,
+      "resentment": 0,
+      "devotion": 5
+    },
+    "russianName": "Соня Мармеладова"
+  },
+  {
+    "id": "myshkin",
+    "name": "梅什金公爵",
+    "source": "《白痴》",
+    "title": "以纯净抵抗世界粗粝的人",
+    "verdict": "你相信善意不是幼稚，而是最稀有的勇气。",
+    "analysis": "你看人的方式并不天真。恰恰因为你看见了破碎与卑劣，你的温柔才显得近乎危险。你会让别人误以为你脆弱，实际上你只是拒绝用同样的残忍去回应残忍。",
+    "quote": "你不想赢过谁，你只是舍不得任何灵魂彻底沉下去。",
+    "communityMbti": "INFJ",
+    "palette": {
+      "accent": "#c7b48f",
+      "secondary": "#6f5c44",
+      "glow": "rgba(199, 180, 143, 0.35)",
+      "surface": "#211a15",
+      "paper": "#f0e8d7"
+    },
+    "profile": {
+      "reason": 2,
+      "faith": 5,
+      "nihilism": 0,
+      "compassion": 5,
+      "desire": 1,
+      "pride": 0,
+      "selfDestruction": 2,
+      "fantasy": 1,
+      "resentment": 0,
+      "devotion": 4
+    },
+    "russianName": "Лев Мышкин"
+  },
+  {
+    "id": "nastasya",
+    "name": "娜斯塔霞",
+    "source": "《白痴》",
+    "title": "把羞辱烧成火焰的人",
+    "verdict": "你最锋利的不是美，而是那种宁可焚毁自己也不肯被定义的骄傲。",
+    "analysis": "你的情感从来不是平静的河流，而是反复自证的烈火。你渴望被理解，却总在最接近被拯救的时刻转身把自己推回深渊。自尊、自毁与欲望在你身上互相喂养。",
+    "quote": "你宁可碎裂得明亮，也不愿被任何人温顺地保存。",
+    "communityMbti": "ENFJ",
+    "palette": {
+      "accent": "#c16557",
+      "secondary": "#551d25",
+      "glow": "rgba(193, 101, 87, 0.34)",
+      "surface": "#251517",
+      "paper": "#f2d8d0"
+    },
+    "profile": {
+      "reason": 2,
+      "faith": 1,
+      "nihilism": 3,
+      "compassion": 2,
+      "desire": 4,
+      "pride": 5,
+      "selfDestruction": 5,
+      "fantasy": 2,
+      "resentment": 2,
+      "devotion": 1
+    },
+    "russianName": "Настасья Филипповна"
+  },
+  {
+    "id": "ivan",
+    "name": "伊万",
+    "source": "《卡拉马佐夫兄弟》",
+    "title": "向上帝递交反诘书的人",
+    "verdict": "你拒绝廉价答案，宁可在怀疑里继续燃烧。",
+    "analysis": "你真正珍视的不是否定，而是诚实。你会一路追问，把信仰、秩序、爱甚至天国都推上审判台。你不容忍被安慰，也不愿靠麻醉来维持意义，所以你的理性总带着冰冷的火焰。",
+    "quote": "你不是没有心，你只是不能容忍未经质问的真理。",
+    "communityMbti": "INTJ",
+    "palette": {
+      "accent": "#cf7a4b",
+      "secondary": "#4f231f",
+      "glow": "rgba(207, 122, 75, 0.3)",
+      "surface": "#221514",
+      "paper": "#f0dccf"
+    },
+    "profile": {
+      "reason": 5,
+      "faith": 0,
+      "nihilism": 5,
+      "compassion": 1,
+      "desire": 1,
+      "pride": 3,
+      "selfDestruction": 2,
+      "fantasy": 1,
+      "resentment": 2,
+      "devotion": 0
+    },
+    "russianName": "Иван Карамазов"
+  },
+  {
+    "id": "alyosha",
+    "name": "阿廖沙",
+    "source": "《卡拉马佐夫兄弟》",
+    "title": "在废墟里仍相信联结的人",
+    "verdict": "你看见人性的破碎，却仍选择站在爱这一边。",
+    "analysis": "你并不是不懂黑暗，只是不愿让黑暗替你决定对人的态度。你最大的力量在于连接：你总能在冲突、羞耻和孤独之间，看见尚未熄灭的善意。你的信仰是向人的。",
+    "quote": "你把温柔当作行动，而不是一种姿态。",
+    "communityMbti": "INFP",
+    "palette": {
+      "accent": "#9e8352",
+      "secondary": "#33402a",
+      "glow": "rgba(158, 131, 82, 0.3)",
+      "surface": "#171712",
+      "paper": "#ebe2cf"
+    },
+    "profile": {
+      "reason": 1,
+      "faith": 5,
+      "nihilism": 0,
+      "compassion": 5,
+      "desire": 1,
+      "pride": 1,
+      "selfDestruction": 1,
+      "fantasy": 1,
+      "resentment": 0,
+      "devotion": 4
+    },
+    "russianName": "Алёша Карамазов"
+  },
+  {
+    "id": "dmitri",
+    "name": "德米特里",
+    "source": "《卡拉马佐夫兄弟》",
+    "title": "把生命活成烈酒的人",
+    "verdict": "你的一切都来得太猛，连悔恨都带着炽热。",
+    "analysis": "你不是稳定的火，而是一团随时可能烧穿自己的烈焰。欲望、冲动、慷慨和懊悔全都真实得可怕。你可能会失控，但也因此保有一种别人没有的生命震动。",
+    "quote": "你从不小心地活着，所以每一次跌倒都像命运亲手推的。",
+    "communityMbti": "ESFP",
+    "palette": {
+      "accent": "#d46b3e",
+      "secondary": "#6a2f1d",
+      "glow": "rgba(212, 107, 62, 0.34)",
+      "surface": "#26140f",
+      "paper": "#f1d6c3"
+    },
+    "profile": {
+      "reason": 1,
+      "faith": 1,
+      "nihilism": 2,
+      "compassion": 3,
+      "desire": 5,
+      "pride": 3,
+      "selfDestruction": 3,
+      "fantasy": 1,
+      "resentment": 1,
+      "devotion": 2
+    },
+    "russianName": "Дмитрий Карамазов"
+  },
+  {
+    "id": "grushenka",
+    "name": "格鲁什卡",
+    "source": "《卡拉马佐夫兄弟》",
+    "title": "让爱欲和反转都生动起来的人",
+    "verdict": "你身上有危险的吸引力，因为你从不让情感只停在表面。",
+    "analysis": "你知道如何试探，也知道如何回身。你的魅力不只是美，而是你总能把欲望、伤痕和玩笑拧成一种独特的情感张力。你会靠近，也会后撤，让人始终无法彻底读懂。",
+    "quote": "你不是轻浮，你只是知道真心从来不会以体面姿态出现。",
+    "communityMbti": "ESFP",
+    "palette": {
+      "accent": "#b65a4a",
+      "secondary": "#5a2537",
+      "glow": "rgba(182, 90, 74, 0.33)",
+      "surface": "#241416",
+      "paper": "#f0d5cf"
+    },
+    "profile": {
+      "reason": 1,
+      "faith": 1,
+      "nihilism": 2,
+      "compassion": 3,
+      "desire": 5,
+      "pride": 4,
+      "selfDestruction": 2,
+      "fantasy": 1,
+      "resentment": 2,
+      "devotion": 2
+    },
+    "russianName": "Грушенька"
+  },
+  {
+    "id": "smerdyakov",
+    "name": "斯梅尔佳科夫",
+    "source": "《卡拉马佐夫兄弟》",
+    "title": "把怨恨藏进沉默的人",
+    "verdict": "你最可怕的地方，是几乎从不在表面上显露情绪。",
+    "analysis": "你不热烈，也不张扬，但你会把长期积压的侮辱感、轻蔑和冷淡一点点存进体内。你擅长服从的外壳，也因此更擅长在无人防备时做出真正阴冷的反击。",
+    "quote": "你不总是站在火里，但你会记住每一簇火焰是谁点燃的。",
+    "communityMbti": "ISTP",
+    "palette": {
+      "accent": "#7f8a7d",
+      "secondary": "#222826",
+      "glow": "rgba(127, 138, 125, 0.3)",
+      "surface": "#121615",
+      "paper": "#d8ddd6"
+    },
+    "profile": {
+      "reason": 3,
+      "faith": 0,
+      "nihilism": 5,
+      "compassion": 0,
+      "desire": 1,
+      "pride": 2,
+      "selfDestruction": 2,
+      "fantasy": 0,
+      "resentment": 5,
+      "devotion": 0
+    },
+    "russianName": "Павел Смердяков"
+  },
+  {
+    "id": "stavrogin",
+    "name": "斯塔夫罗金",
+    "source": "《群魔》",
+    "title": "优雅地靠近深渊的人",
+    "verdict": "你像一座无火的火山，危险不是因为爆发，而是因为空。",
+    "analysis": "你最令人不安的地方，是那种几乎不向任何价值真正屈服的空心感。你可以冷静、迷人、强大，也可以在一切边界前显得毫不迟疑。你不是简单的恶，而是失去内在锚点后的危险自由。",
+    "quote": "你不是没有能力爱，而是很难再相信任何事值得你交出自己。",
+    "communityMbti": "ISFP",
+    "palette": {
+      "accent": "#59647a",
+      "secondary": "#1c2231",
+      "glow": "rgba(89, 100, 122, 0.34)",
+      "surface": "#121620",
+      "paper": "#d5dceb"
+    },
+    "profile": {
+      "reason": 3,
+      "faith": 0,
+      "nihilism": 5,
+      "compassion": 0,
+      "desire": 3,
+      "pride": 4,
+      "selfDestruction": 4,
+      "fantasy": 1,
+      "resentment": 2,
+      "devotion": 0
+    },
+    "russianName": "Николай Ставрогин"
+  },
+  {
+    "id": "kirillov",
+    "name": "基里洛夫",
+    "source": "《群魔》",
+    "title": "把观念推到生死边缘的人",
+    "verdict": "你会为了一个绝对命题，把自己也一起押上。",
+    "analysis": "你并非天生冷酷，恰恰相反，你太需要一种终极的确定性，于是把思考一步步逼到无法后退的位置。你在观念上的极端，与其说来自野心，不如说来自一种近乎宗教式的意志。",
+    "quote": "你想要的不是安慰，而是一个连死亡都不能反驳的答案。",
+    "communityMbti": "INTJ",
+    "palette": {
+      "accent": "#7b90b5",
+      "secondary": "#28354e",
+      "glow": "rgba(123, 144, 181, 0.3)",
+      "surface": "#131924",
+      "paper": "#dde7f5"
+    },
+    "profile": {
+      "reason": 5,
+      "faith": 1,
+      "nihilism": 4,
+      "compassion": 1,
+      "desire": 0,
+      "pride": 3,
+      "selfDestruction": 5,
+      "fantasy": 0,
+      "resentment": 1,
+      "devotion": 1
+    },
+    "russianName": "Алексей Кириллов"
+  },
+  {
+    "id": "underground",
+    "name": "地下室人",
+    "source": "《地下室手记》",
+    "title": "把敏感炼成毒的人",
+    "verdict": "你清醒得太久，于是连爱都先尝到了侮辱感。",
+    "analysis": "你最大的痛苦来自看得太细、记得太久。每一次受伤、羞耻和被轻视，都会在体内长出新的倒刺。你不只是反讽世界，你也在反讽自己，于是怨恨、自尊与自毁变成了同一套呼吸系统。",
+    "quote": "你早就知道如何刺伤别人，只是不幸更擅长刺伤自己。",
+    "communityMbti": "INTP",
+    "palette": {
+      "accent": "#866956",
+      "secondary": "#2f241e",
+      "glow": "rgba(134, 105, 86, 0.3)",
+      "surface": "#171310",
+      "paper": "#e6d9cf"
+    },
+    "profile": {
+      "reason": 4,
+      "faith": 0,
+      "nihilism": 5,
+      "compassion": 1,
+      "desire": 1,
+      "pride": 5,
+      "selfDestruction": 4,
+      "fantasy": 2,
+      "resentment": 5,
+      "devotion": 0
+    },
+    "russianName": "Подпольный человек"
+  },
+  {
+    "id": "alexei",
+    "name": "阿列克谢",
+    "source": "《赌徒》",
+    "title": "把偶然当命运的人",
+    "verdict": "你很容易被某个瞬间点燃，然后把全部自己押上去。",
+    "analysis": "你并不总是在追求胜利，你更像在追求那种临界点上的眩晕。欲望、冒险和失控感会让你觉得自己终于活得足够真实。你知道危险，却也常常无法从危险里后退。",
+    "quote": "你不是喜欢输赢，你是太容易沉迷于命运翻面的声音。",
+    "communityMbti": "INFP",
+    "palette": {
+      "accent": "#2d8a83",
+      "secondary": "#123b3f",
+      "glow": "rgba(45, 138, 131, 0.31)",
+      "surface": "#0f1919",
+      "paper": "#d7ebe8"
+    },
+    "profile": {
+      "reason": 2,
+      "faith": 0,
+      "nihilism": 2,
+      "compassion": 1,
+      "desire": 5,
+      "pride": 2,
+      "selfDestruction": 3,
+      "fantasy": 2,
+      "resentment": 1,
+      "devotion": 0
+    },
+    "russianName": "Алексей Иванович"
+  },
+  {
+    "id": "nelly",
+    "name": "涅莉",
+    "source": "《被侮辱与被损害的》",
+    "title": "太早学会忍痛的孩子",
+    "verdict": "你会先学会咬紧牙关，再决定要不要相信别人。",
+    "analysis": "你对伤害的记忆不会轻易蒸发。脆弱和倔强在你身上不是反义词，而是同一枚硬币的两面。你也许渴望被接住，但更害怕靠近之后又被放下，所以总会先把刺亮出来。",
+    "quote": "你不是不想被爱，你只是不肯再轻易把软处交出去。",
+    "communityMbti": "ISFP",
+    "palette": {
+      "accent": "#7d5f92",
+      "secondary": "#281d37",
+      "glow": "rgba(125, 95, 146, 0.3)",
+      "surface": "#17121e",
+      "paper": "#e5dbef"
+    },
+    "profile": {
+      "reason": 1,
+      "faith": 0,
+      "nihilism": 2,
+      "compassion": 1,
+      "desire": 1,
+      "pride": 4,
+      "selfDestruction": 3,
+      "fantasy": 1,
+      "resentment": 5,
+      "devotion": 1
+    },
+    "russianName": "Нелли"
+  },
+  {
+    "id": "devushkin",
+    "name": "杰乌什金",
+    "source": "《穷人》",
+    "title": "在贫穷里仍想体面的人",
+    "verdict": "你怕的不是困窘本身，而是困窘夺走一个人的体面。",
+    "analysis": "你对羞耻和尊严非常敏感，所以哪怕身处最逼仄的现实，也仍会努力维持温柔和礼貌。你不宏大，也不锋利，但你的真诚会让人看见普通人如何艰难地守住善意。",
+    "quote": "你并不渺小，只是一直在低处替体面找一块能站稳的地。",
+    "communityMbti": "ISFJ",
+    "palette": {
+      "accent": "#8f7758",
+      "secondary": "#3c2f1f",
+      "glow": "rgba(143, 119, 88, 0.3)",
+      "surface": "#18140f",
+      "paper": "#e9ddcf"
+    },
+    "profile": {
+      "reason": 1,
+      "faith": 2,
+      "nihilism": 1,
+      "compassion": 4,
+      "desire": 1,
+      "pride": 3,
+      "selfDestruction": 2,
+      "fantasy": 2,
+      "resentment": 1,
+      "devotion": 4
+    },
+    "russianName": "Макар Девушкин"
+  },
+  {
+    "id": "netochka",
+    "name": "涅多奇卡",
+    "source": "《涅朵奇卡·涅兹瓦诺娃》",
+    "title": "从创伤中长出自我的孩子",
+    "verdict": "你总在痛感和想象之间，慢慢拼出自己的轮廓。",
+    "analysis": "你拥有强烈的感受力，也因此很早就学会在内心搭建世界。创伤并没有完全毁坏你，反而迫使你不断去理解自己究竟是谁。你的成长不是线性的，而是带着回声、幻想和疼痛的。",
+    "quote": "你会反复回望自己的伤口，但不是为了停下，而是为了看清自己从哪里长出来。",
+    "communityMbti": "INFJ",
+    "palette": {
+      "accent": "#6f78b7",
+      "secondary": "#23274a",
+      "glow": "rgba(111, 120, 183, 0.31)",
+      "surface": "#121522",
+      "paper": "#dde0f2"
+    },
+    "profile": {
+      "reason": 2,
+      "faith": 1,
+      "nihilism": 2,
+      "compassion": 3,
+      "desire": 1,
+      "pride": 3,
+      "selfDestruction": 3,
+      "fantasy": 4,
+      "resentment": 2,
+      "devotion": 2
+    },
+    "russianName": "Неточка Незванова"
+  },
+  {
+    "id": "dreamer",
+    "name": "梦想家",
+    "source": "《白夜》",
+    "title": "把夜色活成内心剧场的人",
+    "verdict": "你常常先爱上一个可能性，再慢慢回到现实。",
+    "analysis": "你并非不懂现实，只是太容易在现实到来之前先把情感活过一遍。孤独会让你的想象越来越丰盛，也让每一次短暂的相遇都像一场巨大的神启。你依靠幻想活着，也为幻想受伤。",
+    "quote": "你不是逃避现实，你只是常常先在心里替现实长出一整个夜晚。",
+    "communityMbti": "INFP",
+    "palette": {
+      "accent": "#5c83c6",
+      "secondary": "#1a2e58",
+      "glow": "rgba(92, 131, 198, 0.33)",
+      "surface": "#111724",
+      "paper": "#dde7f6"
+    },
+    "profile": {
+      "reason": 1,
+      "faith": 1,
+      "nihilism": 1,
+      "compassion": 3,
+      "desire": 2,
+      "pride": 2,
+      "selfDestruction": 2,
+      "fantasy": 5,
+      "resentment": 1,
+      "devotion": 1
+    },
+    "russianName": "Мечтатель"
+  },
+  {
+    "id": "nastenka",
+    "name": "娜斯坚卡",
+    "source": "《白夜》",
+    "title": "在青春里摇摆发光的人",
+    "verdict": "你不是轻率，而是仍然相信心会比秩序更快做决定。",
+    "analysis": "你身上有一种尚未被现实彻底驯服的明亮。你会犹豫、摇摆，也会突然真诚得让人无法防御。你的可爱不在于单纯，而在于你仍相信情感值得被迅速回应。",
+    "quote": "你像灯下的一次转身，轻，却足够让人记很久。",
+    "communityMbti": "ENFP",
+    "palette": {
+      "accent": "#c98d6c",
+      "secondary": "#654135",
+      "glow": "rgba(201, 141, 108, 0.31)",
+      "surface": "#221613",
+      "paper": "#f0ddd5"
+    },
+    "profile": {
+      "reason": 1,
+      "faith": 1,
+      "nihilism": 1,
+      "compassion": 4,
+      "desire": 3,
+      "pride": 2,
+      "selfDestruction": 1,
+      "fantasy": 4,
+      "resentment": 1,
+      "devotion": 2
+    },
+    "russianName": "Настенька"
+  }
+]

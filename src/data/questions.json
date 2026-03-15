@@ -1,0 +1,410 @@
+[
+  {
+    "id": "midnight-guilt",
+    "prompt": "当你在深夜忽然想起自己做过的一件亏心事，最像你的反应是？",
+    "options": [
+      {
+        "id": "justify-it",
+        "label": "A",
+        "text": "先把它重新论证一遍，试图证明当时那样做并非毫无理由。",
+        "weights": { "reason": 2, "pride": 1, "nihilism": 1 },
+        "roleAffinity": { "raskolnikov": 2, "ivan": 1, "kirillov": 1 }
+      },
+      {
+        "id": "kneel-to-it",
+        "label": "B",
+        "text": "让痛苦完整地压过来，宁愿受折磨，也不想逃开它。",
+        "weights": { "faith": 1, "selfDestruction": 2, "devotion": 1 },
+        "roleAffinity": { "sonya": 2, "nastasya": 1, "myshkin": 1 }
+      },
+      {
+        "id": "sneer-it",
+        "label": "C",
+        "text": "对这种忏悔冲动感到厌烦，甚至想嘲笑它。",
+        "weights": { "nihilism": 2, "resentment": 1, "reason": 1 },
+        "roleAffinity": { "underground": 2, "stavrogin": 1, "smerdyakov": 1 }
+      },
+      {
+        "id": "pray-for-both",
+        "label": "D",
+        "text": "替那个曾受伤的人和现在的自己都留下一点宽恕。",
+        "weights": { "faith": 2, "compassion": 1, "devotion": 1 },
+        "roleAffinity": { "alyosha": 2, "sonya": 1, "myshkin": 1 }
+      }
+    ]
+  },
+  {
+    "id": "public-humiliation",
+    "prompt": "如果有人在众人面前羞辱你，你更可能怎么做？",
+    "options": [
+      {
+        "id": "remember-the-cut",
+        "label": "A",
+        "text": "表面平静，内心却把每一个细节都牢牢记下。",
+        "weights": { "pride": 2, "resentment": 2 },
+        "roleAffinity": { "underground": 2, "nelly": 1, "smerdyakov": 1 }
+      },
+      {
+        "id": "answer-with-dignity",
+        "label": "B",
+        "text": "尽量体面地回应，至少别让自己的尊严先碎掉。",
+        "weights": { "pride": 2, "compassion": 1, "devotion": 1 },
+        "roleAffinity": { "devushkin": 2, "raskolnikov": 1, "sonya": 1 }
+      },
+      {
+        "id": "turn-it-into-question",
+        "label": "C",
+        "text": "立刻从这场羞辱里看见一个更大的关于人性的命题。",
+        "weights": { "reason": 2, "nihilism": 1, "fantasy": 1 },
+        "roleAffinity": { "ivan": 2, "kirillov": 1, "dreamer": 1 }
+      },
+      {
+        "id": "burn-back",
+        "label": "D",
+        "text": "让对方知道，你宁可两败俱伤也不会乖乖吞下这口气。",
+        "weights": { "desire": 1, "pride": 2, "selfDestruction": 1 },
+        "roleAffinity": { "nastasya": 2, "dmitri": 1, "grushenka": 1 }
+      }
+    ]
+  },
+  {
+    "id": "love-shape",
+    "prompt": "在爱情里，你最容易陷入的是哪一种状态？",
+    "options": [
+      {
+        "id": "save-them",
+        "label": "A",
+        "text": "想救对方，甚至不自觉把爱活成一种照料和承担。",
+        "weights": { "compassion": 2, "devotion": 2 },
+        "roleAffinity": { "sonya": 2, "alyosha": 1, "myshkin": 1 }
+      },
+      {
+        "id": "be-consumed",
+        "label": "B",
+        "text": "越爱越像被吞没，情感一上来就很难给自己留退路。",
+        "weights": { "desire": 2, "selfDestruction": 1, "pride": 1 },
+        "roleAffinity": { "nastasya": 2, "dmitri": 1, "grushenka": 1 }
+      },
+      {
+        "id": "analyze-love",
+        "label": "C",
+        "text": "一边靠近，一边不断怀疑爱本身是不是一场误认。",
+        "weights": { "reason": 2, "nihilism": 1, "fantasy": 1 },
+        "roleAffinity": { "ivan": 2, "raskolnikov": 1, "dreamer": 1 }
+      },
+      {
+        "id": "idealize-it",
+        "label": "D",
+        "text": "很容易先爱上自己心里那道光，再慢慢看见现实中的人。",
+        "weights": { "fantasy": 2, "compassion": 1, "desire": 1 },
+        "roleAffinity": { "dreamer": 2, "nastenka": 1, "netochka": 1 }
+      }
+    ]
+  },
+  {
+    "id": "god-silence",
+    "prompt": "面对上帝的沉默，你更接近哪一种判断？",
+    "options": [
+      {
+        "id": "human-must-answer",
+        "label": "A",
+        "text": "既然天上不回答，人就只能自己承担审判和后果。",
+        "weights": { "reason": 2, "pride": 1, "nihilism": 1 },
+        "roleAffinity": { "raskolnikov": 2, "ivan": 1, "kirillov": 1 }
+      },
+      {
+        "id": "mercy-in-silence",
+        "label": "B",
+        "text": "沉默未必是否定，也可能是在逼人把光往心里找。",
+        "weights": { "faith": 2, "devotion": 1, "compassion": 1 },
+        "roleAffinity": { "alyosha": 2, "myshkin": 1, "sonya": 1 }
+      },
+      {
+        "id": "proof-of-void",
+        "label": "C",
+        "text": "沉默本身就是答案，它说明这个世界从未被真正看顾。",
+        "weights": { "nihilism": 2, "reason": 1, "resentment": 1 },
+        "roleAffinity": { "ivan": 2, "stavrogin": 1, "underground": 1 }
+      },
+      {
+        "id": "wager-with-self",
+        "label": "D",
+        "text": "你想用自己的命去逼出一个答案，哪怕答案只是极限。",
+        "weights": { "selfDestruction": 2, "reason": 1, "faith": 1 },
+        "roleAffinity": { "kirillov": 2, "nastasya": 1, "alexei": 1 }
+      }
+    ]
+  },
+  {
+    "id": "poverty-line",
+    "prompt": "如果贫穷开始吞噬生活，你最想守住什么？",
+    "options": [
+      {
+        "id": "mind-clear",
+        "label": "A",
+        "text": "头脑。只要还能想清楚，就还不算彻底倒下。",
+        "weights": { "reason": 2, "pride": 1 },
+        "roleAffinity": { "raskolnikov": 2, "ivan": 1, "underground": 1 }
+      },
+      {
+        "id": "mercy-left",
+        "label": "B",
+        "text": "别让穷苦把自己变成一个对别人也残酷的人。",
+        "weights": { "compassion": 2, "devotion": 1, "faith": 1 },
+        "roleAffinity": { "sonya": 2, "alyosha": 1, "myshkin": 1 }
+      },
+      {
+        "id": "last-dignity",
+        "label": "C",
+        "text": "体面。哪怕只剩很小的一点，也不能让它被踩烂。",
+        "weights": { "pride": 2, "resentment": 1, "devotion": 1 },
+        "roleAffinity": { "devushkin": 2, "nelly": 1, "raskolnikov": 1 }
+      },
+      {
+        "id": "rush-of-luck",
+        "label": "D",
+        "text": "总觉得只要再赌一把、再搏一次，命运也许就会翻面。",
+        "weights": { "desire": 2, "fantasy": 1, "selfDestruction": 1 },
+        "roleAffinity": { "alexei": 2, "dmitri": 1, "nastenka": 1 }
+      }
+    ]
+  },
+  {
+    "id": "suffering-meaning",
+    "prompt": "你更相信苦难会把人引向什么？",
+    "options": [
+      {
+        "id": "purify-love",
+        "label": "A",
+        "text": "引向爱。人只有在破碎里，才真正学会看见别人。",
+        "weights": { "compassion": 2, "faith": 1, "devotion": 1 },
+        "roleAffinity": { "sonya": 2, "alyosha": 1, "myshkin": 1 }
+      },
+      {
+        "id": "make-proud-ferocious",
+        "label": "B",
+        "text": "引向更锋利的自我。伤口会让人更想证明自己。",
+        "weights": { "pride": 2, "reason": 1, "selfDestruction": 1 },
+        "roleAffinity": { "raskolnikov": 2, "nastasya": 1, "underground": 1 }
+      },
+      {
+        "id": "reveal-absurd",
+        "label": "C",
+        "text": "引向荒诞。它让人明白世界从未答应过公正。",
+        "weights": { "nihilism": 2, "reason": 1, "resentment": 1 },
+        "roleAffinity": { "ivan": 2, "stavrogin": 1, "smerdyakov": 1 }
+      },
+      {
+        "id": "turn-inward-stage",
+        "label": "D",
+        "text": "引向更复杂的内心剧场，人会在伤里不断改写自己。",
+        "weights": { "fantasy": 2, "selfDestruction": 1, "compassion": 1 },
+        "roleAffinity": { "netochka": 2, "dreamer": 1, "nelly": 1 }
+      }
+    ]
+  },
+  {
+    "id": "temptation",
+    "prompt": "当一个危险而迷人的诱惑出现在你面前，你通常会？",
+    "options": [
+      {
+        "id": "step-closer",
+        "label": "A",
+        "text": "先靠近再说，很多事不燃烧一次你根本不会服气。",
+        "weights": { "desire": 2, "selfDestruction": 1, "fantasy": 1 },
+        "roleAffinity": { "dmitri": 2, "alexei": 1, "grushenka": 1 }
+      },
+      {
+        "id": "test-it",
+        "label": "B",
+        "text": "会试探它，也试探自己，看谁先露出真实的底色。",
+        "weights": { "desire": 1, "pride": 1, "resentment": 1, "reason": 1 },
+        "roleAffinity": { "grushenka": 2, "nastasya": 1, "stavrogin": 1 }
+      },
+      {
+        "id": "watch-it-coldly",
+        "label": "C",
+        "text": "保持距离，看看欲望究竟是怎样操纵一个人的。",
+        "weights": { "reason": 2, "nihilism": 1, "resentment": 1 },
+        "roleAffinity": { "ivan": 1, "smerdyakov": 1, "stavrogin": 2 }
+      },
+      {
+        "id": "fear-who-it-hurts",
+        "label": "D",
+        "text": "比起诱惑本身，你更先想到它会伤到谁。",
+        "weights": { "compassion": 2, "devotion": 1, "faith": 1 },
+        "roleAffinity": { "alyosha": 2, "myshkin": 1, "sonya": 1 }
+      }
+    ]
+  },
+  {
+    "id": "another-person-fall",
+    "prompt": "看见一个人正在一点点走向毁灭时，你会怎样？",
+    "options": [
+      {
+        "id": "pull-them-back",
+        "label": "A",
+        "text": "尽力拉住他，哪怕最后也许还是会一起受伤。",
+        "weights": { "compassion": 2, "devotion": 2 },
+        "roleAffinity": { "sonya": 2, "myshkin": 1, "alyosha": 1 }
+      },
+      {
+        "id": "understand-why",
+        "label": "B",
+        "text": "比起阻止，你更想弄明白他为什么会走到这里。",
+        "weights": { "reason": 2, "fantasy": 1, "nihilism": 1 },
+        "roleAffinity": { "ivan": 1, "netochka": 1, "raskolnikov": 2 }
+      },
+      {
+        "id": "recognize-self",
+        "label": "C",
+        "text": "会有一种古怪的共鸣，因为你知道毁灭有时也带着诱惑。",
+        "weights": { "selfDestruction": 2, "nihilism": 1, "desire": 1 },
+        "roleAffinity": { "nastasya": 2, "stavrogin": 1, "underground": 1 }
+      },
+      {
+        "id": "hide-your-pity",
+        "label": "D",
+        "text": "你会把怜悯藏起来，因为裸露的怜悯常常更像羞辱。",
+        "weights": { "resentment": 2, "pride": 1, "compassion": 1 },
+        "roleAffinity": { "nelly": 2, "smerdyakov": 1, "underground": 1 }
+      }
+    ]
+  },
+  {
+    "id": "freedom-definition",
+    "prompt": "你最认同的“自由”更像下面哪一种？",
+    "options": [
+      {
+        "id": "answer-to-self-alone",
+        "label": "A",
+        "text": "只对自己负责，不再把命运托付给任何更高权威。",
+        "weights": { "reason": 2, "pride": 1, "nihilism": 1 },
+        "roleAffinity": { "raskolnikov": 1, "ivan": 1, "kirillov": 2 }
+      },
+      {
+        "id": "stay-able-to-love",
+        "label": "B",
+        "text": "不管遭遇什么，都还保有爱人与原谅的能力。",
+        "weights": { "faith": 1, "compassion": 2, "devotion": 1 },
+        "roleAffinity": { "alyosha": 2, "sonya": 1, "myshkin": 1 }
+      },
+      {
+        "id": "no-one-sees-through-me",
+        "label": "C",
+        "text": "别人永远别想真正掌控、定义或占有我。",
+        "weights": { "pride": 2, "desire": 1, "selfDestruction": 1 },
+        "roleAffinity": { "nastasya": 2, "grushenka": 1, "stavrogin": 1 }
+      },
+      {
+        "id": "room-for-my-inner-world",
+        "label": "D",
+        "text": "在现实挤压之下，依然给内心留一个不被打断的世界。",
+        "weights": { "fantasy": 2, "reason": 1, "selfDestruction": 1 },
+        "roleAffinity": { "dreamer": 2, "netochka": 1, "underground": 1 }
+      }
+    ]
+  },
+  {
+    "id": "witness-injustice",
+    "prompt": "如果你亲眼看见一件荒唐的不公，最先被点燃的是什么？",
+    "options": [
+      {
+        "id": "rage-against-order",
+        "label": "A",
+        "text": "一种想把整个秩序都重新摆上审判台的愤怒。",
+        "weights": { "reason": 1, "nihilism": 2, "resentment": 1 },
+        "roleAffinity": { "ivan": 2, "raskolnikov": 1, "smerdyakov": 1 }
+      },
+      {
+        "id": "pain-for-victim",
+        "label": "B",
+        "text": "是对受害者的痛感，先于任何宏大判断到来。",
+        "weights": { "compassion": 2, "devotion": 1, "faith": 1 },
+        "roleAffinity": { "sonya": 2, "alyosha": 1, "myshkin": 1 }
+      },
+      {
+        "id": "humiliation-memory",
+        "label": "C",
+        "text": "你会先想到自己也曾被这样对待，于是旧伤翻涌。",
+        "weights": { "resentment": 2, "pride": 1, "selfDestruction": 1 },
+        "roleAffinity": { "nelly": 2, "underground": 1, "devushkin": 1 }
+      },
+      {
+        "id": "seduced-by-chaos",
+        "label": "D",
+        "text": "某个危险的念头会闪过：也许毁掉一切才是真正公平。",
+        "weights": { "nihilism": 2, "selfDestruction": 1, "desire": 1 },
+        "roleAffinity": { "stavrogin": 2, "kirillov": 1, "smerdyakov": 1 }
+      }
+    ]
+  },
+  {
+    "id": "what-others-misread",
+    "prompt": "别人最容易误解你的地方是什么？",
+    "options": [
+      {
+        "id": "they-call-cold",
+        "label": "A",
+        "text": "他们说你冷，其实你只是很难对肤浅的东西投入热情。",
+        "weights": { "reason": 2, "nihilism": 1, "pride": 1 },
+        "roleAffinity": { "ivan": 2, "raskolnikov": 1, "stavrogin": 1 }
+      },
+      {
+        "id": "they-call-weak",
+        "label": "B",
+        "text": "他们说你太软，可你只是比多数人更难对痛苦无动于衷。",
+        "weights": { "compassion": 2, "faith": 1, "devotion": 1 },
+        "roleAffinity": { "myshkin": 2, "sonya": 1, "alyosha": 1 }
+      },
+      {
+        "id": "they-call-dangerous",
+        "label": "C",
+        "text": "他们觉得你反复、难测、危险，可你只是拒绝被轻易看透。",
+        "weights": { "desire": 1, "pride": 2, "selfDestruction": 1 },
+        "roleAffinity": { "grushenka": 2, "nastasya": 1, "stavrogin": 1 }
+      },
+      {
+        "id": "they-call-unreal",
+        "label": "D",
+        "text": "他们说你不够现实，可很多东西若不先在心里活过一次，你根本不会信。",
+        "weights": { "fantasy": 2, "compassion": 1, "reason": 1 },
+        "roleAffinity": { "dreamer": 2, "netochka": 1, "nastenka": 1 }
+      }
+    ]
+  },
+  {
+    "id": "last-confession",
+    "prompt": "如果生命最后只剩一句自白，你最想说的是？",
+    "options": [
+      {
+        "id": "i-wanted-to-transcend",
+        "label": "A",
+        "text": "我曾想凌驾于人群之上，但灵魂比理论更重。",
+        "weights": { "reason": 2, "pride": 1, "selfDestruction": 1 },
+        "roleAffinity": { "raskolnikov": 2, "ivan": 1, "kirillov": 1 }
+      },
+      {
+        "id": "forgive-my-poor-love",
+        "label": "B",
+        "text": "如果我笨拙地伤过你，请把它也算进我努力爱过的证据里。",
+        "weights": { "devotion": 2, "compassion": 1, "faith": 1 },
+        "roleAffinity": { "sonya": 1, "myshkin": 1, "alyosha": 1, "devushkin": 1 }
+      },
+      {
+        "id": "i-burned-myself-first",
+        "label": "C",
+        "text": "我把骄傲、欲望和羞耻一起点着，最后最先烧到的是自己。",
+        "weights": { "selfDestruction": 2, "pride": 1, "desire": 1 },
+        "roleAffinity": { "nastasya": 2, "dmitri": 1, "grushenka": 1 }
+      },
+      {
+        "id": "i-lived-inside-night",
+        "label": "D",
+        "text": "我曾把一整个世界都藏在心里，哪怕它只亮过一夜。",
+        "weights": { "fantasy": 2, "compassion": 1, "selfDestruction": 1 },
+        "roleAffinity": { "dreamer": 2, "netochka": 1, "nastenka": 1 }
+      }
+    ]
+  }
+]
