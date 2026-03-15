@@ -1,17 +1,4 @@
 {
-  "name": "surveys",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
-}
-
-{
   "name": "dostoevsky-soul-trial",
   "private": true,
   "version": "0.0.0",

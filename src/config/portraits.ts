@@ -17,6 +17,6 @@ export const PORTRAIT_IMAGES: Partial<Record<RoleId, string>> = {
   nelly: new URL('../pics/nelly.jpg', import.meta.url).href,
   devushkin: new URL('../pics/devushkin.jpg', import.meta.url).href,
   netochka: new URL('../pics/netochka.jpg', import.meta.url).href,
-  dreamer: new URL('../pics/dreamer.png', import.meta.url).href,
+  dreamer: new URL('../pics/dreamer.jpg', import.meta.url).href,
   nastenka: new URL('../pics/nastenka.jpg', import.meta.url).href,
 };
