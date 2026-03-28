@@ -30,6 +30,29 @@ function App() {
   const didRecordAttemptRef = useRef(false);
 
   const resultBundle = useMemo(() => {
+    const url = new URL(window.location.href);
+    const previewRole = url.searchParams.get('result');
+
+    if (previewRole) {
+      const preview = calculateResult([]);
+      const forced = preview.ranked.find((entry) => entry.result.id === previewRole);
+
+      if (forced) {
+        const sortedDimensions = [...Object.entries(forced.result.profile)]
+          .sort((a, b) => b[1] - a[1])
+          .map(([dimension]) => dimension as keyof typeof forced.result.profile);
+
+        return {
+          ...preview,
+          result: forced.result,
+          ranked: preview.ranked,
+          userScores: forced.result.profile,
+          normalizedScores: forced.result.profile,
+          topDimensions: sortedDimensions.slice(0, 5),
+        };
+      }
+    }
+
     if (answers.length !== questions.length) {
       return null;
     }
@@ -46,7 +69,9 @@ function App() {
 
     const bootstrapAuth = async () => {
       const url = new URL(window.location.href);
-      const devBypass = canBypassAuth && url.searchParams.get('dev') === '1';
+      const devBypass =
+        canBypassAuth &&
+        (url.searchParams.get('dev') === '1' || Boolean(url.searchParams.get('result')));
 
       if (devBypass) {
         setAuthError(null);
@@ -118,6 +143,12 @@ function App() {
 
     void saveAttempt();
   }, [answers, hasRecordedAttempt, phase, resultBundle]);
+
+  useEffect(() => {
+    if (resultBundle && new URL(window.location.href).searchParams.get('result')) {
+      setPhase('result');
+    }
+  }, [resultBundle]);
 
   const handleStart = () => {
     setPhase('question');

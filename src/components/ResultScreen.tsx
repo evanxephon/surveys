@@ -1,6 +1,6 @@
 import { toBlob } from 'html-to-image';
 import { AnimatePresence, motion } from 'framer-motion';
-import { useRef, useState } from 'react';
+import { useMemo, useRef, useState } from 'react';
 import { PortraitTile } from './PortraitTile';
 import { SHARE_CONFIG } from '../config/share';
 import type { Dimension, FullWeights, ResultProfile } from '../types';
@@ -25,6 +25,30 @@ const dimensionText: Record<Dimension, string> = {
   devotion: '奉献',
 };
 
+const TAG_POSITIONS = [
+  'left-[4%] top-[6%]',
+  'right-[5%] top-[12%]',
+  'left-[7%] bottom-[24%]',
+  'right-[8%] bottom-[18%]',
+  'left-1/2 top-[50%] -translate-x-1/2 -translate-y-1/2',
+];
+
+function buildPosterTags(topDimensions: Dimension[], scores: FullWeights) {
+  return topDimensions.slice(0, 5).map((dimension, index) => ({
+    dimension,
+    value: scores[dimension],
+    className:
+      index === 0
+        ? 'px-5 py-3 text-[1.65rem]'
+        : index === 1
+          ? 'px-4 py-2.5 text-[1.3rem]'
+          : index === 2
+            ? 'px-4 py-2 text-[1.1rem]'
+            : 'px-3.5 py-2 text-[0.95rem]',
+    position: TAG_POSITIONS[index] ?? TAG_POSITIONS[TAG_POSITIONS.length - 1],
+  }));
+}
+
 function SharePoster({
   result,
   topDimensions,
@@ -34,66 +58,66 @@ function SharePoster({
   topDimensions: Dimension[];
   scores: FullWeights;
 }) {
-  const posterTags = topDimensions.slice(0, 5);
+  const posterTags = buildPosterTags(topDimensions, scores);
 
   return (
     <div
-      className="relative mx-auto w-full max-w-[380px] overflow-hidden rounded-[30px] border border-white/15 p-4 shadow-glow"
+      className="relative mx-auto w-full max-w-[420px] overflow-hidden rounded-[34px] border border-white/12 px-4 pb-5 pt-4 shadow-glow"
       style={{
-        background: `radial-gradient(circle at 18% 18%, ${result.palette.glow}, transparent 30%), radial-gradient(circle at 85% 12%, rgba(255,255,255,0.08), transparent 22%), linear-gradient(135deg, ${result.palette.surface}, ${result.palette.secondary})`,
+        background: `radial-gradient(circle at 15% 18%, ${result.palette.glow}, transparent 30%), radial-gradient(circle at 84% 14%, rgba(255,255,255,0.08), transparent 22%), linear-gradient(140deg, ${result.palette.surface}, ${result.palette.secondary})`,
       }}
     >
-      <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.08),transparent_30%,rgba(0,0,0,0.18))]" />
-      <div className="relative flex flex-col">
-        <div className="space-y-3">
-          <div className="flex items-start justify-between gap-3">
-            <div>
-              <p className="text-xs leading-5 text-fog/68">{SHARE_CONFIG.shareSubtitle}</p>
-            </div>
-            <div className="rounded-full border border-white/15 bg-black/15 px-3 py-1 text-[10px] tracking-[0.16em] text-parchment/72">
-              {result.source}
-            </div>
-          </div>
-
-          <div className="overflow-hidden rounded-[22px] border border-white/10 bg-black/18">
-            <PortraitTile
-              roleId={result.id}
-              alt={result.name}
-              className="mx-auto aspect-square w-full max-w-[14rem]"
-              imageClassName="h-full w-full object-contain"
-              overlayClassName="bg-[linear-gradient(180deg,rgba(0,0,0,0.04),rgba(0,0,0,0.26))]"
-            />
-          </div>
-
-          <div>
-            <p className="font-display text-[2.35rem] leading-[0.92] text-fog">{result.name}</p>
-            <p className="mt-2 text-xs uppercase tracking-[0.22em] text-parchment/58">
-              {result.russianName}
-            </p>
-            <p className="mt-2 text-[13px] leading-6 text-fog/76">{result.verdict}</p>
+      <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.06),transparent_28%,rgba(0,0,0,0.18))]" />
+      <div className="relative space-y-4">
+        <div className="flex items-start justify-between gap-3">
+          <p className="max-w-[14rem] text-[12px] leading-6 text-fog/84">{SHARE_CONFIG.shareSubtitle}</p>
+          <div className="rounded-full border border-white/12 bg-black/12 px-3 py-1 text-[10px] tracking-[0.16em] text-parchment/72">
+            {result.source}
           </div>
         </div>
 
-        <div className="pt-4">
-          <div className="grid grid-cols-2 gap-2">
-            {posterTags.map((dimension, index) => (
-              <div
-                key={dimension}
-                className={`rounded-[18px] border px-3 py-2 ${
-                  index === 0
-                    ? 'border-parchment/35 bg-parchment/15 text-fog'
-                    : 'border-white/12 bg-black/20 text-parchment/82'
-                }`}
-              >
-                <div className="flex items-end justify-between gap-3">
-                  <span className="text-[12px] tracking-[0.08em]">{dimensionText[dimension]}</span>
-                  <span className="text-[11px] tracking-[0.12em] text-parchment/72">
-                    {scores[dimension].toFixed(1)}
-                  </span>
+        <div className="relative overflow-hidden rounded-[28px] border border-white/10 bg-black/16 px-4 pb-4 pt-5">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_12%,rgba(255,255,255,0.08),transparent_28%)]" />
+          <div className="relative mx-auto max-w-[18rem]">
+            <PortraitTile
+              roleId={result.id}
+              alt={result.name}
+              className="mx-auto aspect-square w-full rounded-[24px] border border-white/10 bg-[#d5cab7]"
+              imageClassName="h-full w-full object-cover"
+              overlayClassName="bg-[linear-gradient(180deg,rgba(16,10,10,0.04),rgba(16,10,10,0.18))]"
+            />
+
+            <div className="pointer-events-none absolute inset-0">
+              {posterTags.map((tag, index) => (
+                <div
+                  key={tag.dimension}
+                  className={`absolute ${tag.position} max-w-[48%] rounded-full border backdrop-blur-md ${
+                    index === 0
+                      ? 'border-parchment/45 bg-[#2c1d17]/72 text-fog shadow-[0_18px_40px_rgba(0,0,0,0.24)]'
+                      : 'border-white/18 bg-[#18110e]/68 text-fog/94'
+                  } ${tag.className}`}
+                >
+                  <div className="flex items-end gap-2 leading-none">
+                    <span className="font-display">{dimensionText[tag.dimension]}</span>
+                    <span className="pb-1 text-[11px] tracking-[0.16em] text-parchment/72">
+                      {tag.value.toFixed(1)}
+                    </span>
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
+        </div>
+
+        <div className="space-y-2 px-1">
+          <p className="font-display text-[2.8rem] leading-[0.92] text-fog">{result.name}</p>
+          <p className="text-xs uppercase tracking-[0.28em] text-parchment/56">{result.russianName}</p>
+          <p className="max-w-[18rem] text-[14px] leading-7 text-fog/78">{result.verdict}</p>
+        </div>
+
+        <div className="rounded-[24px] border border-white/10 bg-black/16 px-4 py-3">
+          <p className="text-[11px] uppercase tracking-[0.2em] text-parchment/56">{SHARE_CONFIG.shareTitle}</p>
+          <p className="mt-2 text-[12px] leading-6 text-fog/72 break-all">{SHARE_CONFIG.xiaohongshuPlaceholderUrl}</p>
         </div>
       </div>
     </div>
@@ -111,6 +135,8 @@ export function ResultScreen({
   const [isExporting, setIsExporting] = useState(false);
   const [showSharePreview, setShowSharePreview] = useState(false);
 
+  const rankedTags = useMemo(() => buildPosterTags(topDimensions, scores), [topDimensions, scores]);
+
   const handleExport = async () => {
     if (!posterRef.current || isExporting) {
       return;
@@ -120,7 +146,7 @@ export function ResultScreen({
       setIsExporting(true);
       const blob = await toBlob(posterRef.current, {
         cacheBust: true,
-        pixelRatio: 2,
+        pixelRatio: 3,
         backgroundColor: result.palette.surface,
       });
 
@@ -142,6 +168,32 @@ export function ResultScreen({
     }
   };
 
+  const handleShare = async () => {
+    const shareUrl = SHARE_CONFIG.xiaohongshuPlaceholderUrl || SHARE_CONFIG.fallbackShareUrl;
+
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: `${SHARE_CONFIG.shareSubtitle} · ${result.name}`,
+          text: `${result.name}｜${result.verdict}`,
+          url: shareUrl,
+        });
+        return;
+      } catch (error) {
+        if ((error as Error).name === 'AbortError') {
+          return;
+        }
+      }
+    }
+
+    try {
+      await navigator.clipboard.writeText(shareUrl);
+      window.alert('分享链接已复制。你可以把它贴到小红书帖子或私信里。');
+    } catch {
+      window.prompt('复制这个链接用于分享：', shareUrl);
+    }
+  };
+
   return (
     <>
       <motion.section
@@ -149,15 +201,15 @@ export function ResultScreen({
         initial={{ opacity: 0, y: 24 }}
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: -20 }}
-        transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-        className="px-6 pb-12 pt-8 sm:px-8"
+        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+        className="px-4 pb-10 pt-6 sm:px-8"
       >
-        <div className="mx-auto flex min-h-[100svh] max-w-xl flex-col gap-6">
-          <div className="space-y-4">
-            <p className="text-xs uppercase tracking-[0.28em] text-parchment/68">The Verdict</p>
-            <h2 className="font-display text-5xl leading-none text-fog sm:text-6xl">{result.name}</h2>
-            <p className="text-sm uppercase tracking-[0.24em] text-parchment/56">{result.russianName}</p>
-            <p className="text-base leading-7 text-fog/72">{result.source} · {result.title}</p>
+        <div className="mx-auto flex min-h-[100svh] max-w-xl flex-col gap-5">
+          <div className="space-y-3">
+            <p className="text-[11px] uppercase tracking-[0.3em] text-parchment/62">The Verdict</p>
+            <h2 className="font-display text-[3.15rem] leading-[0.9] text-fog sm:text-6xl">{result.name}</h2>
+            <p className="text-[13px] uppercase tracking-[0.28em] text-parchment/54">{result.russianName}</p>
+            <p className="text-[15px] leading-7 text-fog/72">{result.source} · {result.title}</p>
           </div>
 
           <div
@@ -167,57 +219,51 @@ export function ResultScreen({
               background: `radial-gradient(circle at top right, ${result.palette.glow}, transparent 30%), linear-gradient(140deg, ${result.palette.surface}, ${result.palette.secondary})`,
             }}
           >
-            <div className="relative px-6 py-6">
+            <div className="relative px-4 pb-5 pt-5 sm:px-6">
               <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.08),transparent_28%,rgba(0,0,0,0.18))]" />
-              <div className="absolute inset-x-0 top-[22%] h-px bg-white/10" />
-              <div className="absolute left-[18%] top-[18%] h-28 w-56 rounded-full bg-white/8 blur-3xl" />
-              <div className="absolute right-[8%] top-[28%] h-40 w-24 border-l border-white/10 opacity-45" />
-              <div className="relative space-y-6">
-                <div className="overflow-hidden rounded-[30px] border border-white/10 bg-black/18">
-                  <PortraitTile
-                    roleId={result.id}
-                    alt={result.name}
-                    className="mx-auto aspect-square w-full max-w-[18rem]"
-                    imageClassName="h-full w-full object-contain"
-                    overlayClassName="bg-[linear-gradient(180deg,rgba(25,20,24,0.1),rgba(15,9,14,0.35))]"
-                  />
-                </div>
+              <div className="relative space-y-5">
+                <div className="relative overflow-hidden rounded-[28px] border border-white/10 bg-black/16 px-4 pb-4 pt-5">
+                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_12%,rgba(255,255,255,0.08),transparent_28%)]" />
+                  <div className="relative mx-auto max-w-[19rem]">
+                    <PortraitTile
+                      roleId={result.id}
+                      alt={result.name}
+                      className="mx-auto aspect-square w-full rounded-[26px] border border-white/10 bg-[#d8cbb7]"
+                      imageClassName="h-full w-full object-cover"
+                      overlayClassName="bg-[linear-gradient(180deg,rgba(16,10,10,0.04),rgba(16,10,10,0.18))]"
+                    />
 
-                <div className="flex flex-wrap gap-3">
-                  {topDimensions.slice(0, 5).map((dimension, index) => (
-                    <div
-                      key={dimension}
-                      className={`rounded-full border px-4 py-2.5 backdrop-blur-sm ${
-                        index === 0
-                          ? 'border-parchment/38 bg-parchment/16 text-fog'
-                          : 'border-white/12 bg-black/18 text-fog/88'
-                      }`}
-                    >
-                      <div className="flex items-end gap-3">
-                        <span
-                          className={`font-display leading-none ${
-                            index === 0 ? 'text-[2.25rem]' : 'text-[1.7rem]'
-                          }`}
+                    <div className="pointer-events-none absolute inset-0">
+                      {rankedTags.map((tag, index) => (
+                        <div
+                          key={tag.dimension}
+                          className={`absolute ${tag.position} max-w-[50%] rounded-full border backdrop-blur-md ${
+                            index === 0
+                              ? 'border-parchment/45 bg-[#2c1d17]/74 text-fog shadow-[0_18px_40px_rgba(0,0,0,0.26)]'
+                              : 'border-white/18 bg-[#18110e]/70 text-fog/94'
+                          } ${tag.className}`}
                         >
-                          {dimensionText[dimension]}
-                        </span>
-                        <span className="pb-1 text-xs tracking-[0.2em] text-parchment/70">
-                          {scores[dimension].toFixed(1)}
-                        </span>
-                      </div>
+                          <div className="flex items-end gap-2 leading-none">
+                            <span className="font-display">{dimensionText[tag.dimension]}</span>
+                            <span className="pb-1 text-[11px] tracking-[0.16em] text-parchment/72">
+                              {tag.value.toFixed(1)}
+                            </span>
+                          </div>
+                        </div>
+                      ))}
                     </div>
-                  ))}
+                  </div>
                 </div>
 
-                <div className="rounded-[30px] border border-white/10 bg-black/16 p-5 backdrop-blur-sm">
-                  <p className="font-display text-3xl leading-tight text-fog">{result.verdict}</p>
-                  <p className="mt-4 text-sm leading-7 text-fog/74">{result.analysis}</p>
+                <div className="rounded-[28px] border border-white/10 bg-black/16 p-5 backdrop-blur-sm">
+                  <p className="font-display text-[2.25rem] leading-[1.04] text-fog">{result.verdict}</p>
+                  <p className="mt-4 text-[14px] leading-7 text-fog/74">{result.analysis}</p>
                 </div>
               </div>
             </div>
           </div>
 
-          <div className="rounded-[32px] border border-parchment/16 bg-[#171311]/85 p-5 backdrop-blur">
+          <div className="rounded-[28px] border border-parchment/16 bg-[#171311]/85 p-5 backdrop-blur">
             <div className="flex items-center justify-between">
               <p className="text-sm uppercase tracking-[0.24em] text-parchment/70">灵魂剖面</p>
               <div className="h-2.5 w-2.5 rounded-full" style={{ backgroundColor: result.palette.accent }} />
@@ -246,7 +292,7 @@ export function ResultScreen({
                         <motion.div
                           initial={{ width: 0 }}
                           animate={{ width: `${Math.max(width, 1.5)}%` }}
-                          transition={{ duration: 0.7, delay: 0.08 }}
+                          transition={{ duration: 0.6, delay: 0.05 }}
                           className="h-2 rounded-full"
                           style={{
                             background: `linear-gradient(90deg, ${result.palette.accent}, ${result.palette.paper})`,
@@ -260,20 +306,27 @@ export function ResultScreen({
             </div>
           </div>
 
-          <div className="flex gap-3 pb-[max(env(safe-area-inset-bottom),1rem)]">
+          <div className="grid grid-cols-1 gap-3 pb-[max(env(safe-area-inset-bottom),1rem)] sm:grid-cols-3">
             <button
               type="button"
               onClick={onRestart}
-              className="flex-1 rounded-full border border-white/10 bg-white/5 px-5 py-4 text-sm tracking-[0.14em] text-fog/84 transition hover:bg-white/10"
+              className="rounded-full border border-white/10 bg-white/5 px-5 py-4 text-sm tracking-[0.14em] text-fog/84 transition hover:bg-white/10"
             >
               再测一次
             </button>
             <button
               type="button"
               onClick={() => setShowSharePreview(true)}
-              className="flex-1 rounded-full border border-parchment/25 bg-parchment/90 px-5 py-4 text-sm tracking-[0.14em] text-soot transition hover:bg-parchment"
+              className="rounded-full border border-parchment/25 bg-parchment/90 px-5 py-4 text-sm tracking-[0.14em] text-soot transition hover:bg-parchment"
             >
               查看分享预览
+            </button>
+            <button
+              type="button"
+              onClick={handleShare}
+              className="rounded-full border border-white/12 bg-black/18 px-5 py-4 text-sm tracking-[0.14em] text-fog transition hover:bg-black/24"
+            >
+              直接分享
             </button>
           </div>
         </div>
@@ -285,17 +338,17 @@ export function ResultScreen({
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 bg-black/72 backdrop-blur-sm"
+            className="fixed inset-0 z-50 bg-[#080605]/94"
           >
-            <div className="flex h-full items-center justify-center px-4 py-4 sm:py-8">
+            <div className="flex h-full items-center justify-center px-3 py-3 sm:px-4 sm:py-6">
               <motion.div
-                initial={{ opacity: 0, y: 20, scale: 0.98 }}
+                initial={{ opacity: 0, y: 16, scale: 0.985 }}
                 animate={{ opacity: 1, y: 0, scale: 1 }}
-                exit={{ opacity: 0, y: 18, scale: 0.98 }}
-                transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                className="flex max-h-[calc(100svh-2rem)] w-full max-w-[26rem] flex-col rounded-[34px] border border-white/10 bg-[#130f0d]/96 p-4 shadow-glow"
+                exit={{ opacity: 0, y: 12, scale: 0.985 }}
+                transition={{ duration: 0.24, ease: [0.22, 1, 0.36, 1] }}
+                className="flex max-h-[calc(100svh-1rem)] w-full max-w-[28rem] flex-col rounded-[32px] border border-white/10 bg-[#130f0d] p-3 shadow-[0_35px_120px_rgba(0,0,0,0.55)]"
               >
-                <div className="flex items-center justify-between pb-4">
+                <div className="flex items-center justify-between pb-3">
                   <p className="text-sm uppercase tracking-[0.24em] text-parchment/68">分享预览</p>
                   <button
                     type="button"
@@ -306,27 +359,27 @@ export function ResultScreen({
                   </button>
                 </div>
 
-                <div className="min-h-0 flex-1 overflow-y-auto">
-                  <div ref={posterRef} className="mx-auto w-full max-w-[380px] overflow-visible">
+                <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain px-1 pb-2">
+                  <div ref={posterRef} className="mx-auto w-full max-w-[420px]">
                     <SharePoster result={result} topDimensions={topDimensions} scores={scores} />
                   </div>
                 </div>
 
-                <div className="mt-4 flex shrink-0 gap-3">
+                <div className="mt-3 grid shrink-0 grid-cols-2 gap-3">
                   <button
                     type="button"
                     onClick={handleExport}
-                    className="flex-1 rounded-full border border-parchment/25 bg-parchment/90 px-5 py-4 text-sm tracking-[0.14em] text-soot transition hover:bg-parchment disabled:cursor-wait disabled:opacity-75"
+                    className="rounded-full border border-parchment/25 bg-parchment/90 px-5 py-4 text-sm tracking-[0.14em] text-soot transition hover:bg-parchment disabled:cursor-wait disabled:opacity-75"
                     disabled={isExporting}
                   >
-                    {isExporting ? '保存中...' : '保存图片'}
+                    {isExporting ? '生成中…' : '保存图片'}
                   </button>
                   <button
                     type="button"
-                    onClick={() => setShowSharePreview(false)}
-                    className="flex-1 rounded-full border border-white/10 bg-white/5 px-5 py-4 text-sm tracking-[0.14em] text-fog/84 transition hover:bg-white/10"
+                    onClick={handleShare}
+                    className="rounded-full border border-white/12 bg-black/18 px-5 py-4 text-sm tracking-[0.14em] text-fog transition hover:bg-black/24"
                   >
-                    返回结果
+                    分享链接
                   </button>
                 </div>
               </motion.div>
