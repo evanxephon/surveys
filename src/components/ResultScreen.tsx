@@ -3,7 +3,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { useMemo, useRef, useState } from 'react';
 import { PortraitTile } from './PortraitTile';
 import { SHARE_CONFIG } from '../config/share';
-import type { Dimension, FullWeights, ResultProfile } from '../types';
+import type { Dimension, FullWeights, ResultProfile, RoleId } from '../types';
 
 interface ResultScreenProps {
   result: ResultProfile;
@@ -25,28 +25,186 @@ const dimensionText: Record<Dimension, string> = {
   devotion: '奉献',
 };
 
-const TAG_POSITIONS = [
-  'left-[4%] top-[6%]',
-  'right-[5%] top-[12%]',
-  'left-[7%] bottom-[24%]',
-  'right-[8%] bottom-[18%]',
-  'left-1/2 top-[50%] -translate-x-1/2 -translate-y-1/2',
-];
+const DEFAULT_TAG_POSITIONS = [
+  'left-3 top-3',
+  'right-3 top-4',
+  'left-4 bottom-16',
+  'right-4 bottom-16',
+  'left-1/2 bottom-3 -translate-x-1/2',
+] as const;
 
-function buildPosterTags(topDimensions: Dimension[], scores: FullWeights) {
+const ROLE_TAG_POSITIONS: Partial<Record<RoleId, readonly string[]>> = {
+  sonya: [
+    'left-3 top-4',
+    'right-3 top-4',
+    'left-4 bottom-16',
+    'right-4 bottom-16',
+    'left-1/2 bottom-3 -translate-x-1/2',
+  ],
+  myshkin: [
+    'left-3 top-3',
+    'right-3 top-3',
+    'left-4 bottom-14',
+    'right-4 bottom-17',
+    'left-1/2 bottom-2 -translate-x-1/2',
+  ],
+  raskolnikov: [
+    'left-3 top-3',
+    'right-3 top-5',
+    'left-3 bottom-15',
+    'right-4 bottom-15',
+    'left-1/2 bottom-3 -translate-x-1/2',
+  ],
+  ivan: [
+    'left-4 top-3',
+    'right-3 top-5',
+    'left-4 bottom-15',
+    'right-5 bottom-16',
+    'left-1/2 bottom-3 -translate-x-1/2',
+  ],
+  alyosha: [
+    'left-3 top-4',
+    'right-3 top-4',
+    'left-4 bottom-17',
+    'right-4 bottom-17',
+    'left-1/2 bottom-2 -translate-x-1/2',
+  ],
+  nastasya: [
+    'left-3 top-3',
+    'right-2 top-4',
+    'left-4 bottom-18',
+    'right-4 bottom-14',
+    'left-1/2 bottom-2 -translate-x-1/2',
+  ],
+  dmitri: [
+    'left-3 top-4',
+    'right-3 top-6',
+    'left-4 bottom-14',
+    'right-4 bottom-18',
+    'left-1/2 bottom-2 -translate-x-1/2',
+  ],
+  grushenka: [
+    'left-3 top-4',
+    'right-2 top-4',
+    'left-4 bottom-18',
+    'right-4 bottom-15',
+    'left-1/2 bottom-2 -translate-x-1/2',
+  ],
+  smerdyakov: [
+    'left-3 top-3',
+    'right-3 top-3',
+    'left-4 bottom-14',
+    'right-4 bottom-14',
+    'left-1/2 bottom-2 -translate-x-1/2',
+  ],
+  stavrogin: [
+    'left-4 top-4',
+    'right-3 top-4',
+    'left-4 bottom-16',
+    'right-4 bottom-18',
+    'left-1/2 bottom-3 -translate-x-1/2',
+  ],
+  kirillov: [
+    'left-3 top-3',
+    'right-4 top-5',
+    'left-4 bottom-14',
+    'right-3 bottom-16',
+    'left-1/2 bottom-3 -translate-x-1/2',
+  ],
+  underground: [
+    'left-3 top-4',
+    'right-4 top-5',
+    'left-3 bottom-15',
+    'right-4 bottom-14',
+    'left-1/2 bottom-2 -translate-x-1/2',
+  ],
+  alexei: [
+    'left-3 top-3',
+    'right-3 top-4',
+    'left-4 bottom-17',
+    'right-4 bottom-16',
+    'left-1/2 bottom-3 -translate-x-1/2',
+  ],
+  nelly: [
+    'left-3 top-4',
+    'right-2 top-4',
+    'left-4 bottom-16',
+    'right-4 bottom-18',
+    'left-1/2 bottom-2 -translate-x-1/2',
+  ],
+  devushkin: [
+    'left-3 top-3',
+    'right-3 top-3',
+    'left-4 bottom-15',
+    'right-4 bottom-16',
+    'left-1/2 bottom-2 -translate-x-1/2',
+  ],
+  netochka: [
+    'left-3 top-4',
+    'right-3 top-4',
+    'left-4 bottom-18',
+    'right-4 bottom-15',
+    'left-1/2 bottom-2 -translate-x-1/2',
+  ],
+  dreamer: [
+    'left-3 top-3',
+    'right-3 top-5',
+    'left-4 bottom-17',
+    'right-4 bottom-17',
+    'left-1/2 bottom-2 -translate-x-1/2',
+  ],
+  nastenka: [
+    'left-3 top-4',
+    'right-3 top-4',
+    'left-4 bottom-18',
+    'right-4 bottom-15',
+    'left-1/2 bottom-2 -translate-x-1/2',
+  ],
+};
+
+function buildPosterTags(roleId: RoleId, topDimensions: Dimension[], scores: FullWeights) {
+  const positions = ROLE_TAG_POSITIONS[roleId] ?? DEFAULT_TAG_POSITIONS;
   return topDimensions.slice(0, 5).map((dimension, index) => ({
     dimension,
     value: scores[dimension],
     className:
       index === 0
-        ? 'px-5 py-3 text-[1.65rem]'
+        ? 'px-4 py-3 text-[1.35rem]'
         : index === 1
-          ? 'px-4 py-2.5 text-[1.3rem]'
+          ? 'px-4 py-2.5 text-[1.1rem]'
           : index === 2
-            ? 'px-4 py-2 text-[1.1rem]'
-            : 'px-3.5 py-2 text-[0.95rem]',
-    position: TAG_POSITIONS[index] ?? TAG_POSITIONS[TAG_POSITIONS.length - 1],
+            ? 'px-3.5 py-2.5 text-[1rem]'
+            : 'px-3 py-2 text-[0.92rem]',
+    position: positions[index] ?? positions[positions.length - 1],
   }));
+}
+
+function FloatingTags({
+  tags,
+  emphasizeFirst = true,
+}: {
+  tags: ReturnType<typeof buildPosterTags>;
+  emphasizeFirst?: boolean;
+}) {
+  return (
+    <div className="pointer-events-none absolute inset-0">
+      {tags.map((tag, index) => (
+        <div
+          key={tag.dimension}
+          className={`absolute ${tag.position} max-w-[42%] rounded-[22px] border backdrop-blur-md ${
+            emphasizeFirst && index === 0
+              ? 'border-parchment/45 bg-[#e6ddd2]/84 text-[#241713] shadow-[0_18px_40px_rgba(0,0,0,0.2)]'
+              : 'border-white/16 bg-[#201613]/78 text-fog/94'
+          } ${tag.className}`}
+        >
+          <div className="flex items-end gap-2 leading-none">
+            <span className="font-display leading-[0.95]">{dimensionText[tag.dimension]}</span>
+            <span className="pb-1 text-[11px] tracking-[0.14em] text-parchment/70">{tag.value.toFixed(1)}</span>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
 }
 
 function SharePoster({
@@ -58,7 +216,7 @@ function SharePoster({
   topDimensions: Dimension[];
   scores: FullWeights;
 }) {
-  const posterTags = buildPosterTags(topDimensions, scores);
+  const posterTags = buildPosterTags(result.id, topDimensions, scores);
 
   return (
     <div
@@ -67,7 +225,7 @@ function SharePoster({
         background: `radial-gradient(circle at 15% 18%, ${result.palette.glow}, transparent 30%), radial-gradient(circle at 84% 14%, rgba(255,255,255,0.08), transparent 22%), linear-gradient(140deg, ${result.palette.surface}, ${result.palette.secondary})`,
       }}
     >
-      <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.06),transparent_28%,rgba(0,0,0,0.18))]" />
+      <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.05),transparent_28%,rgba(0,0,0,0.18))]" />
       <div className="relative space-y-4">
         <div className="flex items-start justify-between gap-3">
           <p className="max-w-[14rem] text-[12px] leading-6 text-fog/84">{SHARE_CONFIG.shareSubtitle}</p>
@@ -76,7 +234,7 @@ function SharePoster({
           </div>
         </div>
 
-        <div className="relative overflow-hidden rounded-[28px] border border-white/10 bg-black/16 px-4 pb-4 pt-5">
+        <div className="relative overflow-hidden rounded-[28px] border border-white/10 bg-black/16 px-4 pb-16 pt-5">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_12%,rgba(255,255,255,0.08),transparent_28%)]" />
           <div className="relative mx-auto max-w-[18rem]">
             <PortraitTile
@@ -84,28 +242,9 @@ function SharePoster({
               alt={result.name}
               className="mx-auto aspect-square w-full rounded-[24px] border border-white/10 bg-[#d5cab7]"
               imageClassName="h-full w-full object-cover"
-              overlayClassName="bg-[linear-gradient(180deg,rgba(16,10,10,0.04),rgba(16,10,10,0.18))]"
+              overlayClassName="bg-[linear-gradient(180deg,rgba(16,10,10,0.04),rgba(16,10,10,0.16))]"
             />
-
-            <div className="pointer-events-none absolute inset-0">
-              {posterTags.map((tag, index) => (
-                <div
-                  key={tag.dimension}
-                  className={`absolute ${tag.position} max-w-[48%] rounded-full border backdrop-blur-md ${
-                    index === 0
-                      ? 'border-parchment/45 bg-[#2c1d17]/72 text-fog shadow-[0_18px_40px_rgba(0,0,0,0.24)]'
-                      : 'border-white/18 bg-[#18110e]/68 text-fog/94'
-                  } ${tag.className}`}
-                >
-                  <div className="flex items-end gap-2 leading-none">
-                    <span className="font-display">{dimensionText[tag.dimension]}</span>
-                    <span className="pb-1 text-[11px] tracking-[0.16em] text-parchment/72">
-                      {tag.value.toFixed(1)}
-                    </span>
-                  </div>
-                </div>
-              ))}
-            </div>
+            <FloatingTags tags={posterTags} />
           </div>
         </div>
 
@@ -113,11 +252,6 @@ function SharePoster({
           <p className="font-display text-[2.8rem] leading-[0.92] text-fog">{result.name}</p>
           <p className="text-xs uppercase tracking-[0.28em] text-parchment/56">{result.russianName}</p>
           <p className="max-w-[18rem] text-[14px] leading-7 text-fog/78">{result.verdict}</p>
-        </div>
-
-        <div className="rounded-[24px] border border-white/10 bg-black/16 px-4 py-3">
-          <p className="text-[11px] uppercase tracking-[0.2em] text-parchment/56">{SHARE_CONFIG.shareTitle}</p>
-          <p className="mt-2 text-[12px] leading-6 text-fog/72 break-all">{SHARE_CONFIG.xiaohongshuPlaceholderUrl}</p>
         </div>
       </div>
     </div>
@@ -135,7 +269,10 @@ export function ResultScreen({
   const [isExporting, setIsExporting] = useState(false);
   const [showSharePreview, setShowSharePreview] = useState(false);
 
-  const rankedTags = useMemo(() => buildPosterTags(topDimensions, scores), [topDimensions, scores]);
+  const rankedTags = useMemo(
+    () => buildPosterTags(result.id, topDimensions, scores),
+    [result.id, topDimensions, scores],
+  );
 
   const handleExport = async () => {
     if (!posterRef.current || isExporting) {
@@ -201,7 +338,7 @@ export function ResultScreen({
         initial={{ opacity: 0, y: 24 }}
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: -20 }}
-        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+        transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
         className="px-4 pb-10 pt-6 sm:px-8"
       >
         <div className="mx-auto flex min-h-[100svh] max-w-xl flex-col gap-5">
@@ -222,7 +359,7 @@ export function ResultScreen({
             <div className="relative px-4 pb-5 pt-5 sm:px-6">
               <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.08),transparent_28%,rgba(0,0,0,0.18))]" />
               <div className="relative space-y-5">
-                <div className="relative overflow-hidden rounded-[28px] border border-white/10 bg-black/16 px-4 pb-4 pt-5">
+                <div className="relative overflow-hidden rounded-[28px] border border-white/10 bg-black/16 px-4 pb-16 pt-5">
                   <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_12%,rgba(255,255,255,0.08),transparent_28%)]" />
                   <div className="relative mx-auto max-w-[19rem]">
                     <PortraitTile
@@ -230,28 +367,9 @@ export function ResultScreen({
                       alt={result.name}
                       className="mx-auto aspect-square w-full rounded-[26px] border border-white/10 bg-[#d8cbb7]"
                       imageClassName="h-full w-full object-cover"
-                      overlayClassName="bg-[linear-gradient(180deg,rgba(16,10,10,0.04),rgba(16,10,10,0.18))]"
+                      overlayClassName="bg-[linear-gradient(180deg,rgba(16,10,10,0.04),rgba(16,10,10,0.16))]"
                     />
-
-                    <div className="pointer-events-none absolute inset-0">
-                      {rankedTags.map((tag, index) => (
-                        <div
-                          key={tag.dimension}
-                          className={`absolute ${tag.position} max-w-[50%] rounded-full border backdrop-blur-md ${
-                            index === 0
-                              ? 'border-parchment/45 bg-[#2c1d17]/74 text-fog shadow-[0_18px_40px_rgba(0,0,0,0.26)]'
-                              : 'border-white/18 bg-[#18110e]/70 text-fog/94'
-                          } ${tag.className}`}
-                        >
-                          <div className="flex items-end gap-2 leading-none">
-                            <span className="font-display">{dimensionText[tag.dimension]}</span>
-                            <span className="pb-1 text-[11px] tracking-[0.16em] text-parchment/72">
-                              {tag.value.toFixed(1)}
-                            </span>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
+                    <FloatingTags tags={rankedTags} />
                   </div>
                 </div>
 
@@ -292,7 +410,7 @@ export function ResultScreen({
                         <motion.div
                           initial={{ width: 0 }}
                           animate={{ width: `${Math.max(width, 1.5)}%` }}
-                          transition={{ duration: 0.6, delay: 0.05 }}
+                          transition={{ duration: 0.45, delay: 0.03 }}
                           className="h-2 rounded-full"
                           style={{
                             background: `linear-gradient(90deg, ${result.palette.accent}, ${result.palette.paper})`,
@@ -338,7 +456,7 @@ export function ResultScreen({
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 bg-[#080605]/94"
+            className="fixed inset-0 z-50 bg-[#080605]"
           >
             <div className="flex h-full items-center justify-center px-3 py-3 sm:px-4 sm:py-6">
               <motion.div

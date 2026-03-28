@@ -214,9 +214,9 @@ function App() {
     <main className="relative min-h-[100svh] overflow-hidden bg-grain text-fog">
       <Atmosphere />
       <div className="relative mx-auto min-h-[100svh] max-w-2xl">
-        {authPhase !== 'ready' ? (
+        {authPhase === 'locked' ? (
           <AccessGate
-            isChecking={authPhase === 'checking'}
+            isChecking={false}
             error={authError}
             onSubmit={handleRedeem}
           />
