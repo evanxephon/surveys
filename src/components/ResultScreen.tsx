@@ -61,15 +61,21 @@ function FloatingTags({
       {tags.map((tag, index) => (
         <div
           key={tag.dimension}
-          className={`absolute ${tag.position} max-w-[44%] rounded-[20px] border backdrop-blur-md ${
+          className={`absolute ${tag.position} max-w-[44%] rounded-[20px] border backdrop-blur-sm ${
             emphasizeFirst && index === 0
-              ? 'border-parchment/45 bg-[#e6ddd2]/86 text-[#241713] shadow-[0_12px_30px_rgba(0,0,0,0.18)]'
-              : 'border-white/16 bg-[#201613]/78 text-fog/94'
+              ? 'border-parchment/55 bg-[#dfd1bf]/96 text-[#241713] shadow-[0_10px_24px_rgba(0,0,0,0.16)]'
+              : 'border-white/22 bg-[#251a16]/92 text-fog'
           } ${tag.className}`}
         >
-          <div className="flex items-end gap-2 leading-none">
-            <span className="font-display leading-[0.95]">{dimensionText[tag.dimension]}</span>
-            <span className="pb-1 text-[11px] tracking-[0.14em] text-parchment/70">{tag.value.toFixed(1)}</span>
+          <div className="flex items-end gap-2 whitespace-nowrap leading-none">
+            <span className="font-display whitespace-nowrap leading-[0.95]">{dimensionText[tag.dimension]}</span>
+            <span
+              className={`pb-1 text-[11px] tracking-[0.14em] ${
+                emphasizeFirst && index === 0 ? 'text-[#6a5242]' : 'text-parchment/76'
+              }`}
+            >
+              {tag.value.toFixed(1)}
+            </span>
           </div>
         </div>
       ))}
