@@ -25,14 +25,6 @@ const dimensionText: Record<Dimension, string> = {
   devotion: '奉献',
 };
 
-const FIXED_TAG_POSITIONS = [
-  'left-0 top-0 -translate-y-1/3',
-  'right-0 top-0 -translate-y-1/3',
-  'left-0 bottom-0 translate-y-1/3',
-  'right-0 bottom-0 translate-y-1/3',
-  'left-1/2 -bottom-2 -translate-x-1/2 translate-y-full',
-] as const;
-
 function buildPosterTags(topDimensions: Dimension[], scores: FullWeights) {
   return topDimensions.slice(0, 5).map((dimension, index) => ({
     dimension,
@@ -45,55 +37,14 @@ function buildPosterTags(topDimensions: Dimension[], scores: FullWeights) {
           : index === 2
             ? 'px-3 py-2 text-[0.92rem]'
             : 'px-3 py-2 text-[0.86rem]',
-    position: FIXED_TAG_POSITIONS[index] ?? FIXED_TAG_POSITIONS[FIXED_TAG_POSITIONS.length - 1],
   }));
-}
-
-function FloatingTags({
-  tags,
-  emphasizeFirst = true,
-}: {
-  tags: ReturnType<typeof buildPosterTags>;
-  emphasizeFirst?: boolean;
-}) {
-  return (
-    <div className="pointer-events-none absolute inset-0">
-      {tags.map((tag, index) => (
-        <div
-          key={tag.dimension}
-          className={`absolute ${tag.position} max-w-[44%] rounded-[20px] border backdrop-blur-sm ${
-            emphasizeFirst && index === 0
-              ? 'border-parchment/55 bg-[#dfd1bf]/96 text-[#241713] shadow-[0_10px_24px_rgba(0,0,0,0.16)]'
-              : 'border-white/22 bg-[#251a16]/92 text-fog'
-          } ${tag.className}`}
-        >
-          <div className="flex items-end gap-2 whitespace-nowrap leading-none">
-            <span className="font-display whitespace-nowrap leading-[0.95]">{dimensionText[tag.dimension]}</span>
-            <span
-              className={`pb-1 text-[11px] tracking-[0.14em] ${
-                emphasizeFirst && index === 0 ? 'text-[#6a5242]' : 'text-parchment/76'
-              }`}
-            >
-              {tag.value.toFixed(1)}
-            </span>
-          </div>
-        </div>
-      ))}
-    </div>
-  );
 }
 
 function SharePoster({
   result,
-  topDimensions,
-  scores,
 }: {
   result: ResultProfile;
-  topDimensions: Dimension[];
-  scores: FullWeights;
 }) {
-  const posterTags = buildPosterTags(topDimensions, scores);
-
   return (
     <div
       className="relative mx-auto w-full max-w-[420px] overflow-hidden rounded-[34px] border border-white/12 px-4 pb-5 pt-4 shadow-glow"
@@ -120,7 +71,6 @@ function SharePoster({
               imageClassName="h-full w-full object-cover"
               overlayClassName="bg-[linear-gradient(180deg,rgba(16,10,10,0.04),rgba(16,10,10,0.16))]"
             />
-            <FloatingTags tags={posterTags.slice(0, 4)} />
           </div>
         </div>
 
@@ -242,7 +192,6 @@ export function ResultScreen({
                       imageClassName="h-full w-full object-cover"
                       overlayClassName="bg-[linear-gradient(180deg,rgba(16,10,10,0.04),rgba(16,10,10,0.16))]"
                     />
-                    <FloatingTags tags={rankedTags.slice(0, 4)} />
                   </div>
                 </div>
 
@@ -362,7 +311,7 @@ export function ResultScreen({
 
                 <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain px-1 pb-2">
                   <div ref={posterRef} className="mx-auto w-full max-w-[420px]">
-                    <SharePoster result={result} topDimensions={topDimensions} scores={scores} />
+                    <SharePoster result={result} />
                   </div>
                 </div>
 
