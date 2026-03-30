@@ -54,9 +54,9 @@ function SharePoster({
     >
       <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.05),transparent_28%,rgba(0,0,0,0.18))]" />
       <div className="relative space-y-4">
-        <div className="flex items-start justify-between gap-3">
-          <p className="max-w-[14rem] text-[12px] leading-6 text-fog/84">{SHARE_CONFIG.shareSubtitle}</p>
-          <div className="rounded-full border border-white/12 bg-black/12 px-3 py-1 text-[10px] tracking-[0.16em] text-parchment/72">
+        <div className="space-y-2">
+          <p className="text-[12px] leading-6 text-fog/84">{SHARE_CONFIG.shareSubtitle}</p>
+          <div className="inline-flex rounded-full border border-white/12 bg-black/12 px-3 py-1 text-[10px] tracking-[0.16em] text-parchment/72">
             {result.source}
           </div>
         </div>
