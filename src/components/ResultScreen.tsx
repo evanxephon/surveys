@@ -47,22 +47,18 @@ function SharePoster({
 }) {
   return (
     <div
-      className="relative mx-auto w-full max-w-[420px] overflow-hidden rounded-[34px] border border-white/12 px-4 pb-5 pt-4 shadow-glow"
+      className="relative mx-auto w-full max-w-[400px] overflow-hidden rounded-[32px] border border-white/12 px-4 pb-4 pt-4 shadow-glow"
       style={{
         background: `radial-gradient(circle at 15% 18%, ${result.palette.glow}, transparent 30%), radial-gradient(circle at 84% 14%, rgba(255,255,255,0.08), transparent 22%), linear-gradient(140deg, ${result.palette.surface}, ${result.palette.secondary})`,
       }}
     >
       <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.05),transparent_28%,rgba(0,0,0,0.18))]" />
-      <div className="relative space-y-4">
-        <div className="space-y-2">
-          <p className="text-[12px] leading-6 text-fog/84">{SHARE_CONFIG.shareSubtitle}</p>
-          <div className="inline-flex rounded-full border border-white/12 bg-black/12 px-3 py-1 text-[10px] tracking-[0.16em] text-parchment/72">
-            {result.source}
-          </div>
+      <div className="relative space-y-3">
+        <div>
+          <p className="text-[12px] leading-6 text-fog/84">{`${result.source} · ${result.title}`}</p>
         </div>
 
-        <div className="relative overflow-hidden rounded-[28px] border border-white/10 bg-black/16 px-4 pb-12 pt-5">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_12%,rgba(255,255,255,0.08),transparent_28%)]" />
+        <div className="relative overflow-hidden rounded-[26px] bg-black/12 px-3 pt-3">
           <div className="relative mx-auto max-w-[15rem]">
             <PortraitTile
               roleId={result.id}
@@ -74,10 +70,13 @@ function SharePoster({
           </div>
         </div>
 
-        <div className="space-y-2 px-1">
-          <p className="font-display text-[2.8rem] leading-[0.92] text-fog">{result.name}</p>
+        <div className="space-y-1 px-1">
+          <div className="flex flex-wrap items-end gap-x-3 gap-y-1">
+            <p className="font-display text-[2.6rem] leading-[0.92] text-fog">{result.name}</p>
+            <p className="pb-1 text-[11px] leading-none text-fog/72">{result.source}</p>
+          </div>
           <p className="text-xs uppercase tracking-[0.28em] text-parchment/56">{result.russianName}</p>
-          <p className="max-w-[18rem] text-[14px] leading-7 text-fog/78">{result.verdict}</p>
+          <p className="max-w-[18rem] text-[14px] leading-6 text-fog/78">{result.verdict}</p>
         </div>
       </div>
     </div>
@@ -181,9 +180,8 @@ export function ResultScreen({
           >
             <div className="relative px-4 pb-4 pt-4 sm:px-6">
               <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.08),transparent_28%,rgba(0,0,0,0.18))]" />
-              <div className="relative space-y-4">
-                <div className="relative overflow-hidden rounded-[28px] border border-white/10 bg-black/16 px-4 pb-12 pt-4">
-                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_12%,rgba(255,255,255,0.08),transparent_28%)]" />
+              <div className="relative space-y-3">
+                <div className="relative overflow-hidden rounded-[26px] bg-black/12 px-3 pt-3">
                   <div className="relative mx-auto max-w-[15.5rem]">
                     <PortraitTile
                       roleId={result.id}
@@ -195,7 +193,7 @@ export function ResultScreen({
                   </div>
                 </div>
 
-                <div className="rounded-[28px] border border-white/10 bg-black/16 p-4 backdrop-blur-sm">
+                <div className="rounded-[26px] border border-white/10 bg-black/16 p-4 backdrop-blur-sm">
                   <div className="flex flex-wrap gap-2 pb-3">
                     {rankedTags.slice(0, 5).map((tag, index) => (
                       <div
@@ -213,8 +211,8 @@ export function ResultScreen({
                       </div>
                     ))}
                   </div>
-                  <p className="font-display text-[1.85rem] leading-[1.02] text-fog">{result.verdict}</p>
-                  <p className="mt-3 text-[13px] leading-6 text-fog/74">{result.analysis}</p>
+                  <p className="font-display text-[1.75rem] leading-[1.02] text-fog">{result.verdict}</p>
+                  <p className="mt-2 text-[13px] leading-6 text-fog/74">{result.analysis}</p>
                 </div>
               </div>
             </div>
