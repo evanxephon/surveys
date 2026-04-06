@@ -19,6 +19,7 @@ function App() {
   const isDev = import.meta.env.DEV;
   const isLocalHost = ['127.0.0.1', 'localhost'].includes(window.location.hostname);
   const canBypassAuth = isDev || isLocalHost;
+  const accessGateEnabled = import.meta.env.VITE_ENABLE_ACCESS_GATE === '1';
   const [authPhase, setAuthPhase] = useState<AuthPhase>('checking');
   const [authError, setAuthError] = useState<string | null>(null);
   const [phase, setPhase] = useState<Phase>('intro');
@@ -73,7 +74,7 @@ function App() {
         canBypassAuth &&
         (url.searchParams.get('dev') === '1' || Boolean(url.searchParams.get('result')));
 
-      if (devBypass) {
+      if (!accessGateEnabled || devBypass) {
         setAuthError(null);
         setAuthPhase('ready');
         return;
@@ -194,6 +195,12 @@ function App() {
   };
 
   const handleRedeem = async (code: string) => {
+    if (!accessGateEnabled) {
+      setAuthError(null);
+      setAuthPhase('ready');
+      return;
+    }
+
     setAuthPhase('checking');
     const result = await redeemAccessCode(code);
 

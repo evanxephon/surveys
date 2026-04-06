@@ -1,6 +1,7 @@
 import { toBlob } from 'html-to-image';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useMemo, useRef, useState } from 'react';
+import { QRCodeSVG } from 'qrcode.react';
 import { PortraitTile } from './PortraitTile';
 import { SHARE_CONFIG } from '../config/share';
 import type { Dimension, FullWeights, ResultProfile } from '../types';
@@ -45,6 +46,8 @@ function SharePoster({
 }: {
   result: ResultProfile;
 }) {
+  const qrValue = SHARE_CONFIG.xiaohongshuPlaceholderUrl || SHARE_CONFIG.fallbackShareUrl;
+
   return (
     <div
       className="relative mx-auto w-full max-w-[400px] overflow-hidden rounded-[32px] border border-white/12 px-4 pb-4 pt-4 shadow-glow"
@@ -70,13 +73,28 @@ function SharePoster({
           </div>
         </div>
 
-        <div className="space-y-1 px-1">
-          <div className="flex flex-wrap items-end gap-x-3 gap-y-1">
-            <p className="font-display text-[2.6rem] leading-[0.92] text-fog">{result.name}</p>
-            <p className="pb-1 text-[11px] leading-none text-fog/72">{result.source}</p>
+        <div className="rounded-[24px] border border-white/10 bg-black/14 p-4">
+          <div className="flex items-start justify-between gap-4">
+            <div className="min-w-0 flex-1 space-y-1">
+              <div className="flex flex-wrap items-end gap-x-3 gap-y-1">
+                <p className="font-display text-[2.35rem] leading-[0.92] text-fog">{result.name}</p>
+                <p className="pb-1 text-[11px] leading-none text-fog/72">{result.source}</p>
+              </div>
+              <p className="text-xs uppercase tracking-[0.28em] text-parchment/56">{result.russianName}</p>
+              <p className="max-w-[12rem] text-[14px] leading-6 text-fog/78">{result.verdict}</p>
+            </div>
+
+            <div className="shrink-0 rounded-[18px] border border-white/10 bg-[#f4ead7] p-2">
+              <QRCodeSVG
+                value={qrValue}
+                size={76}
+                bgColor="#f4ead7"
+                fgColor="#201614"
+                includeMargin={false}
+              />
+            </div>
           </div>
-          <p className="text-xs uppercase tracking-[0.28em] text-parchment/56">{result.russianName}</p>
-          <p className="max-w-[18rem] text-[14px] leading-6 text-fog/78">{result.verdict}</p>
+          <p className="mt-3 text-[11px] leading-5 text-parchment/60">扫码直达小红书帖子</p>
         </div>
       </div>
     </div>

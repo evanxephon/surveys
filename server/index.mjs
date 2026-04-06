@@ -11,7 +11,9 @@ const SESSION_COOKIE = 'dost_session';
 const SESSION_TTL_DAYS = Number(process.env.SESSION_TTL_DAYS || 30);
 const SESSION_SECRET = process.env.SESSION_SECRET || 'dev-only-change-me';
 const MASTER_ACCESS_CODE = process.env.MASTER_ACCESS_CODE || 'local-master-2026-v_3a';
-const OPEN_ACCESS = process.env.OPEN_ACCESS === '1';
+// Default to open access so accidental deployments do not lock users out.
+// Set OPEN_ACCESS=0 to re-enable access-code enforcement.
+const OPEN_ACCESS = process.env.OPEN_ACCESS !== '0';
 const DIST_DIR = resolve(process.cwd(), 'dist');
 const db = createDb();
 
